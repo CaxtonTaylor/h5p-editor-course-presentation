@@ -1,4 +1,4 @@
-H5PEditor.CoursePresentation.BackgroundSelector = (function ($, EventDispatcher) {
+H5PEditor.CoursePresentationIDO.BackgroundSelector = (function ($, EventDispatcher) {
 
   /**
    * Create a Background Selector.

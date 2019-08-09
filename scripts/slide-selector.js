@@ -1,4 +1,4 @@
-H5PEditor.CoursePresentation.SlideSelector = (function ($, EventDispatcher) {
+H5PEditor.CoursePresentationIDO.SlideSelector = (function ($, EventDispatcher) {
 
   /**
    * Create a Slide Selector with background settings
@@ -32,7 +32,7 @@ H5PEditor.CoursePresentation.SlideSelector = (function ($, EventDispatcher) {
     // DOM elements
     var $popup = $('<div class="h5p-background-selector">');
     var $title = $('<div class="h5p-background-selector-title">')
-      .html(H5PEditor.t('H5PEditor.CoursePresentation', 'slideBackground', {}))
+      .html(H5PEditor.t('H5PEditor.CoursePresentationIDO', 'slideBackground', {}))
       .appendTo($popup);
     $('<div>', {
       class: 'h5p-background-selector-close',
@@ -54,7 +54,7 @@ H5PEditor.CoursePresentation.SlideSelector = (function ($, EventDispatcher) {
     var $slideContent;
 
     // Single slide semantic fields
-    var singleSlideFields = H5PEditor.CoursePresentation.findField('slideBackgroundSelector', slideFields.field.fields);
+    var singleSlideFields = H5PEditor.CoursePresentationIDO.findField('slideBackgroundSelector', slideFields.field.fields);
 
     /**
      * Init background selectors
@@ -63,20 +63,20 @@ H5PEditor.CoursePresentation.SlideSelector = (function ($, EventDispatcher) {
     var initBgSelectors = function () {
 
       // Global bg selector
-      var templateString = H5PEditor.t('H5PEditor.CoursePresentation', 'template');
-      var currentSlideString = H5PEditor.t('H5PEditor.CoursePresentation', 'currentSlide');
+      var templateString = H5PEditor.t('H5PEditor.CoursePresentationIDO', 'template');
+      var currentSlideString = H5PEditor.t('H5PEditor.CoursePresentationIDO', 'currentSlide');
       $globalContent = createSlideSelector(templateString, true);
-      globalBackground = new H5PEditor.CoursePresentation.BackgroundSelector($slides.children())
+      globalBackground = new H5PEditor.CoursePresentationIDO.BackgroundSelector($slides.children())
         .addBgSelector(globalFields, params, $globalContent, {isVisible: true})
-        .setDescription(H5PEditor.t('H5PEditor.CoursePresentation', 'templateDescription', {':currentSlide': currentSlideString}))
+        .setDescription(H5PEditor.t('H5PEditor.CoursePresentationIDO', 'templateDescription', {':currentSlide': currentSlideString}))
         .addResetButton();
 
       // Single slide bg selector
       $slideContent = createSlideSelector(currentSlideString, false);
       $slides.children().each(function (idx) {
         initSingleSlide($slideContent, idx)
-          .setDescription(H5PEditor.t('H5PEditor.CoursePresentation', 'currentSlideDescription', {':template': templateString}))
-          .addResetButton(H5PEditor.t('H5PEditor.CoursePresentation', 'resetToTemplate'));
+          .setDescription(H5PEditor.t('H5PEditor.CoursePresentationIDO', 'currentSlideDescription', {':template': templateString}))
+          .addResetButton(H5PEditor.t('H5PEditor.CoursePresentationIDO', 'resetToTemplate'));
       });
 
       // Select single slide if first slide has single slide options
@@ -143,10 +143,10 @@ H5PEditor.CoursePresentation.SlideSelector = (function ($, EventDispatcher) {
       // Must sanitize params before processing semantics
       sanitizeSlideParams(newSlideIndex);
       initSingleSlide($slideContent, newSlideIndex)
-        .setDescription(H5PEditor.t('H5PEditor.CoursePresentation', 'currentSlideDescription', {
-          ':template': H5PEditor.t('H5PEditor.CoursePresentation', 'template')
+        .setDescription(H5PEditor.t('H5PEditor.CoursePresentationIDO', 'currentSlideDescription', {
+          ':template': H5PEditor.t('H5PEditor.CoursePresentationIDO', 'template')
         }))
-        .addResetButton(H5PEditor.t('H5PEditor.CoursePresentation', 'resetToTemplate'));
+        .addResetButton(H5PEditor.t('H5PEditor.CoursePresentationIDO', 'resetToTemplate'));
 
       // Change to selected radio button
       var selectedIndex = singleSlides[newSlideIndex - 1].getSelectedIndex();
@@ -203,7 +203,7 @@ H5PEditor.CoursePresentation.SlideSelector = (function ($, EventDispatcher) {
     var initSingleSlide = function ($wrapper, idx) {
       var slideParams = params.slides[idx];
 
-      var singleSlide = new H5PEditor.CoursePresentation.BackgroundSelector($slides.children().eq(idx), true);
+      var singleSlide = new H5PEditor.CoursePresentationIDO.BackgroundSelector($slides.children().eq(idx), true);
 
       // Trigger fallback to global background when single slide is removed
       globalBackground.setBackgroundSlides($slides.children());
